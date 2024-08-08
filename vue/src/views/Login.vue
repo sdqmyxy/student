@@ -3,19 +3,19 @@
     <div class="login-container">
       <div style="width: 350px" class="login-box">
         <div style="font-weight: bold; font-size: 25px;text-align: center; margin-bottom: 30px ">登 录</div>
-        <el-form ref="form" :model="data.from" >
-          <el-form-item>
+        <el-form :model="data.from" :rules="rules" ref="ruleForm">
+          <el-form-item prop="username">
             <el-input prefix-icon="User" v-model="data.from.username" placeholder="请输入账号"/>
           </el-form-item>
-          <el-form-item>
+          <el-form-item prop="password">
             <el-input prefix-icon="lock" v-model="data.from.password" placeholder="请输入密码"/>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" style="width: 100%">登 录</el-button>
+            <el-button type="primary" style="width: 100%" @click="login">登 录</el-button>
           </el-form-item>
         </el-form>
         <div style="margin-top: 30px; text-align: right">
-          还没有账号？请<a href="/register">注册</a>
+          还没有账号？请 <a href="/register">注册</a>
         </div>
       </div>
     </div>
@@ -25,8 +25,22 @@
 import {reactive} from "vue"
 
 const data = reactive({
-  "from": {}
+  from: {}
+
 })
+
+const rules = reactive({
+  username: [
+    { required: true, message: '请输入账号', trigger: 'blur' },
+  ],
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+  ],
+})
+
+const login = () => {
+
+}
 </script>
 
 <style scoped>
