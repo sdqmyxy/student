@@ -19,9 +19,10 @@ public class CourseController {
     public CourseService courseService;
 
     @GetMapping("/selectPage")
-   public Result selectPage(@RequestParam (defaultValue = "1") Integer pageNun,
-                            @RequestParam (defaultValue = "5") Integer pageSize) {
-        PageInfo<Course> pageInfo = courseService.selectPage(pageNun, pageSize);
+   public Result selectPage(@RequestParam (defaultValue = "1") Integer pageNum,
+                            @RequestParam (defaultValue = "5") Integer pageSize,
+                            Course course){
+        PageInfo<Course> pageInfo = courseService.selectPage(pageNum, pageSize,course);
         return Result.success(pageInfo);
    }
 
