@@ -1,0 +1,1 @@
+Struggle with the West！
