@@ -22,7 +22,7 @@
           <el-table-column prop="teacher" label="任课教师"  />
           <el-table-column>
             <template #default="scope">
-              <el-button type="primary">编辑</el-button>
+              <el-button type="primary" @click="handleEdit(scope.row)">编辑</el-button>
               <el-button type="danger">删除</el-button>
             </template>
           </el-table-column>
@@ -77,7 +77,7 @@ const data = reactive({
   tableData:[],
   total: 0,
   pageNum:1,  //当前页码
-  pageSize:5, //每页个数
+  pageSize:10, //每页个数
   formVisible:false,
   form:{}
 
@@ -119,9 +119,14 @@ const handleAdd = () => {
 
 }
 
-// 保存数据到后台
+// 保存数据
 const save = () => {
-  request.post('/course/add', data.form).then(res => {
+  request.request({
+    url: data.form.id ? '/course/update' : '/course/add',
+    method:data.form.id ? 'PUT' : 'POST',
+    data:data.form
+
+  }).then(res => {
     if (res.code === '200') {
       load()    // 重新获取数据
       data.formVisible = false  // 关闭弹窗
@@ -130,6 +135,11 @@ const save = () => {
       ElMessage.error(res.msg)
     }
   })
+}
+
+const handleEdit = (row) => {
+  data.form = JSON.parse(JSON.stringify(row))
+  data.formVisible = true
 }
 
 </script>

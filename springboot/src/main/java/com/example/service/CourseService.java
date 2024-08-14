@@ -28,4 +28,8 @@ public class CourseService {
     public void add(Course course) {
         courseMapper.insert(course);
     }
+
+    public void updateById(Course course) {
+        courseMapper.updateById(course);
+    }
 }

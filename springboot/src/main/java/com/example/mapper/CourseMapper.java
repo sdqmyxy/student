@@ -3,6 +3,7 @@ package com.example.mapper;
 import com.example.entity.Course;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -15,4 +16,7 @@ public interface CourseMapper {
 
     @Insert("insert into course (name, no,times,description,teacher) values(#{name}, #{no}, #{times}, #{description}, #{teacher})")
     void insert(Course course);
+
+    @Update("update course set name = #{name}, no = #{no}, times = #{times}, description = #{description}, teacher = #{teacher} where id = #{id}")
+    void updateById(Course course);
 }
