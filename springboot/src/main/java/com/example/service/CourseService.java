@@ -23,4 +23,9 @@ public class CourseService {
         return PageInfo.of(courseList);
 
     }
+
+    //新增数据
+    public void add(Course course) {
+        courseMapper.insert(course);
+    }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="login-container">
+    <div class="login-container" >
       <div style="width: 350px" class="login-box">
         <div style="font-weight: bold; font-size: 25px;text-align: center; margin-bottom: 30px ">登 录</div>
         <el-form :model="data.from" :rules="rules" ref="ruleForm">
@@ -70,7 +70,7 @@ const login = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("src/assets/imgs/background.jpg");
+  background-image: url("src/assets/imgs/bg3.jpg");
   background-size: cover;
 
 
